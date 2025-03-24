@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "product-management-app",
+  "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,9 +10,20 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.16.1",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "@aws-sdk/client-dynamodb": "^3.485.0",
+    "@aws-sdk/lib-dynamodb": "^3.485.0",
+    "@mdi/font": "^7.3.67",
+    "uuid": "^9.0.1",
+    "vuetify": "^3.5.15"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/seo": "^2.0.0",
+    "@types/node": "^20.11.25",
+    "@types/uuid": "^9.0.8",
+    "nuxt": "^3.10.3",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6"
+  }
 }
