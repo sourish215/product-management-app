@@ -6,7 +6,7 @@ A modern web application for managing products, built with Nuxt.js, Vue 3, and V
 
 - 📋 Complete product inventory management
 - ✨ Create, read, update, and delete (CRUD) operations for products
-- 📊 View all products in a sortable, searchable table
+- 📊 View all products in a sortable table
 - 📱 Responsive design for desktop and mobile
 - 🚀 Fast performance with server-side rendering
 - 🔒 Integration with AWS DynamoDB for data storage
