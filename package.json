@@ -13,6 +13,7 @@
     "@aws-sdk/client-dynamodb": "^3.485.0",
     "@aws-sdk/lib-dynamodb": "^3.485.0",
     "@mdi/font": "^7.3.67",
+    "date-fns": "^4.1.0",
     "uuid": "^9.0.1",
     "vuetify": "^3.5.15"
   },
