@@ -9,13 +9,13 @@ const { formatDate } = useDateFormat();
 
 const product = ref<Product>({} as Product);
 
-// Fetch product data
+// Fetch product data using id
 const getProductById = async () => {
   try {
     product.value = await $fetch(`/api/products/${route.params.id}`);
   } catch (error) {
     console.error("Error fetching product:", error);
-    // Redirect to list page if product not found
+    // Redirect to product list page if product not found
     router.push("/products");
   }
 };
@@ -25,16 +25,11 @@ useHead({
   title: () => product.value.name || "Product Details",
 });
 
-// Format date for display
+// Format date string for display
 const formatDateString = (dateString: string) => {
   if (!dateString) return "";
   const date = new Date(dateString);
   return formatDate(date);
-};
-
-// Navigate to edit page
-const navigateToEdit = () => {
-  router.push("/products");
 };
 
 onMounted(() => {
@@ -111,14 +106,6 @@ onMounted(() => {
             @click="$router.push('/products')"
           >
             Back to List
-          </v-btn>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="warning"
-            class="text-none text-body-1"
-            @click="navigateToEdit"
-          >
-            Edit
           </v-btn>
         </v-card-actions>
       </v-card>
