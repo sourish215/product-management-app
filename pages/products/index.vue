@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ProductList from "@/components/ProductList.vue";
 // Set page title dynamically
 useHead({

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // Set page title dynamically
 useHead({
   title: "Home",

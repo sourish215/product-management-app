@@ -1,5 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import type { VForm } from "vuetify/components";
 import { useDateFormat } from "~/composables/useDateFormat";
+import type { Product, ProductInput } from "~/types/Product";
 // Page title
 useHead({
   title: "Product List",
@@ -9,21 +11,21 @@ const router = useRouter();
 
 const { formatDate } = useDateFormat();
 
-const products = ref([]);
+const products = ref<Product[]>([]);
 const dialog = ref(false);
 const deleteDialog = ref(false);
 const valid = ref(false);
-const form = ref(null);
+const form = ref<VForm | null>(null);
 
 // Default form item
-const defaultProductItem = {
+const defaultProductItem: ProductInput = {
   name: "",
   price: 0,
   quantity: 0,
 };
 
-const editedProduct = ref({ ...defaultProductItem });
-const deleteProduct = ref({ ...defaultProductItem });
+const editedProduct = ref<Partial<Product>>({ ...defaultProductItem });
+const deleteProduct = ref<Partial<Product>>({ ...defaultProductItem });
 const editedProductIndex = ref(-1);
 
 const headers = [
@@ -55,14 +57,14 @@ const getProducts = async () => {
 };
 
 // Format date for display
-const formatDateString = (dateString) => {
+const formatDateString = (dateString: string) => {
   if (!dateString) return "";
   const date = new Date(dateString);
   return formatDate(date);
 };
 
 // Open dialog for adding/editing product
-const openProductDialog = (item) => {
+const openProductDialog = (item?: Product) => {
   if (item) {
     editedProductIndex.value = products.value.findIndex(
       (p) => p.id === item.id
@@ -87,7 +89,7 @@ const closeDialog = () => {
 
 // Save product (create or update)
 const handleSaveProduct = async () => {
-  if (!form.value.validate()) return;
+  if (form.value && !form.value.validate()) return;
 
   try {
     if (editedProductIndex.value > -1) {
@@ -119,7 +121,7 @@ const handleSaveProduct = async () => {
 };
 
 // Confirm delete
-const confirmDeleteProduct = (item) => {
+const confirmDeleteProduct = (item: Product) => {
   deleteProduct.value = item;
   deleteDialog.value = true;
 };
@@ -138,7 +140,7 @@ const handleDeleteProduct = async () => {
   }
 };
 
-function onProductClick(id) {
+function onProductClick(id?: string) {
   if (!id) {
     return;
   }
@@ -209,11 +211,11 @@ onMounted(() => {
       </template>
 
       <template v-slot:item.created_at="{ item }">
-        {{ formatDateString(item.created_at) }}
+        {{ formatDateString(item.created_at ?? "") }}
       </template>
 
       <template v-slot:item.updated_at="{ item }">
-        {{ formatDateString(item.updated_at) }}
+        {{ formatDateString(item.updated_at ?? "") }}
       </template>
 
       <template v-slot:item.actions="{ item }">

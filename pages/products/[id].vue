@@ -1,12 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { useDateFormat } from "~/composables/useDateFormat";
+import type { Product } from "~/types/Product";
 
 const route = useRoute();
 const router = useRouter();
 
 const { formatDate } = useDateFormat();
 
-const product = ref({});
+const product = ref<Product>({} as Product);
 
 // Fetch product data
 const getProductById = async () => {
@@ -25,7 +26,7 @@ useHead({
 });
 
 // Format date for display
-const formatDateString = (dateString) => {
+const formatDateString = (dateString: string) => {
   if (!dateString) return "";
   const date = new Date(dateString);
   return formatDate(date);
@@ -87,7 +88,7 @@ onMounted(() => {
               </template>
               <v-list-item-title>Created At</v-list-item-title>
               <v-list-item-subtitle>
-                {{ formatDateString(product.created_at) }}
+                {{ formatDateString(product.created_at ?? "") }}
               </v-list-item-subtitle>
             </v-list-item>
 
@@ -97,7 +98,7 @@ onMounted(() => {
               </template>
               <v-list-item-title>Last Updated</v-list-item-title>
               <v-list-item-subtitle>
-                {{ formatDateString(product.updated_at) }}
+                {{ formatDateString(product.updated_at ?? "") }}
               </v-list-item-subtitle>
             </v-list-item>
           </v-list>
