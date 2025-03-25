@@ -13,8 +13,9 @@
         to="/"
         active-class="active-link"
         class="text-decoration-none text-h6 text-white default-link mr-4"
-        >Home</NuxtLink
       >
+        Home
+      </NuxtLink>
       <NuxtLink
         to="/products"
         active-class="active-link"

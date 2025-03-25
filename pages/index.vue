@@ -14,14 +14,12 @@ useHead({
         your products.
       </p>
 
-      <v-btn
-        color="primary"
-        size="large"
+      <NuxtLink
         to="/products"
-        class="ma-2 text-h6 text-none"
+        class="text-decoration-none text-h6 bg-blue-lighten-1 text-white pa-2 rounded"
       >
         View Products
-      </v-btn>
+      </NuxtLink>
     </v-container>
   </div>
 </template>

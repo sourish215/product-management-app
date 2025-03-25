@@ -87,7 +87,7 @@ const closeDialog = () => {
   }, 300);
 };
 
-// Save product (create or update)
+// Create or update product
 const handleSaveProduct = async () => {
   if (form.value && !form.value.validate()) return;
 
@@ -147,7 +147,6 @@ function onProductClick(id?: string) {
   router.push(`/products/${id}`);
 }
 
-// Lifecycle hooks
 onMounted(() => {
   getProducts();
 });
@@ -155,6 +154,7 @@ onMounted(() => {
 
 <template>
   <div>
+    <!-- Product Table -->
     <v-data-table
       :headers="headers"
       :items="products"
@@ -165,7 +165,7 @@ onMounted(() => {
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Products</v-toolbar-title>
+          <v-spacer></v-spacer>
           <v-btn
             color="primary"
             dark
@@ -180,21 +180,6 @@ onMounted(() => {
       <template v-slot:loading>
         <v-skeleton-loader type="table-row@5"></v-skeleton-loader>
       </template>
-
-      <!-- <template v-slot:item.name="{ item }">
-        <v-tooltip location="top">
-          <template v-slot:activator="{ props }">
-            <span
-              v-bind="props"
-              class="truncate-text clickable-item"
-              @click="onProductClick(item.id)"
-            >
-              {{ item.name }}
-            </span>
-          </template>
-          {{ item.name }}
-        </v-tooltip>
-      </template> -->
 
       <template v-slot:item.name="{ item }">
         <span class="clickable-item" @click="onProductClick(item.id)">
@@ -339,14 +324,5 @@ onMounted(() => {
 
 .clickable-item:hover {
   color: #1e88e5;
-}
-
-.truncate-text {
-  display: inline-block;
-  max-width: 200px; /* Adjust based on table width */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
 }
 </style>

@@ -9,7 +9,7 @@ useHead({
 <template>
   <div>
     <v-container>
-      <h1 class="text-h4 my-4">Product Management</h1>
+      <h1 class="text-h4 my-4">Product Table</h1>
       <ProductList />
     </v-container>
   </div>
