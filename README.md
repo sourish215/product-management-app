@@ -56,15 +56,36 @@ This command:
 - Creates a persistent volume for your data
 - Makes DynamoDB accessible at http://localhost:8000
 
-2. Create the Products table:
+1. Create the Products table:
 
 ```bash
 aws dynamodb create-table \
     --table-name Products \
     --attribute-definitions AttributeName=id,AttributeType=S \
     --key-schema AttributeName=id,KeyType=HASH \
-    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
-    --endpoint-url http://localhost:8000
+    --billing-mode PAY_PER_REQUEST \
+    --endpoint-url http://localhost:8000 \
+    --region local
+```
+
+2. Insert dummy product data:
+
+```bash
+aws dynamodb put-item --table-name Products --item '{
+    "id": {"S": "35"},
+    "name": {"S": "Robot Vacuum Cleaner"},
+    "price": {"N": "499.99"},
+    "quantity": {"N": "7"},
+    "total_amount": {"N": "3499.93"},
+    "created_at": {"S": "2024-03-25T03:30:00Z"},
+    "updated_at": {"S": "2024-03-25T03:30:00Z"}
+}' --endpoint-url http://localhost:8000 --region local
+```
+
+3. Check for items in the Products table:
+
+```bash
+aws dynamodb scan --table-name Products --endpoint-url http://localhost:8000 --region local
 ```
 
 ### Installation
