@@ -152,3 +152,30 @@ MIT
 - [Nuxt.js Team](https://nuxt.com/)
 - [Vue.js Team](https://vuejs.org/)
 - [Vuetify Team](https://vuetifyjs.com/)
+
+## Screenshots
+
+### Home
+
+![Home](public/screenshots/home.png)
+_The home page_
+
+### Product List
+
+![Product List](public/screenshots/product-list.png)
+_The main product management dashboard showing all products in a data table_
+
+### Add/Edit Product
+
+![Add/Edit Product](public/screenshots/product-form.png)
+_Dialog for creating new products or editing existing ones_
+
+### Delete Product
+
+![Delete Product](public/screenshots/product-delete.png)
+_Dialog for deleting products_
+
+### Product Detail
+
+![Product Detail](public/screenshots/product-details.png)
+_Detailed view of a single product with all its information_
